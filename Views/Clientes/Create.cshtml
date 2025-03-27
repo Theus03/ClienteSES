@@ -1,0 +1,79 @@
+@model CadastroClientes.Models.Cliente
+
+@{
+    ViewData["Title"] = "Cadastrar Cliente";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create">
+            <div class="form-group">
+                <label asp-for="Nome" class="control-label"></label>
+                <input asp-for="Nome" class="form-control" required />
+                <span asp-validation-for="Nome" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Tipo" class="control-label"></label>
+                <select asp-for="Tipo" class="form-control" id="tipo" required>
+                    <option value="">Selecione...</option>
+                    <option value="PF">Pessoa Física</option>
+                    <option value="PJ">Pessoa Jurídica</option>
+                </select>
+                <span asp-validation-for="Tipo" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Documento" class="control-label"></label>
+                <input asp-for="Documento" class="form-control" id="documento" required />
+                <span asp-validation-for="Documento" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Telefone" class="control-label"></label>
+                <input asp-for="Telefone" class="form-control" required />
+                <span asp-validation-for="Telefone" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Cadastrar" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Voltar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <!-- jQuery para máscaras -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+
+    <script>
+        function aplicarMascaraDocumento(tipo) {
+            var input = $('#documento');
+            input.unmask();
+
+            if (tipo === 'PF') {
+                input.mask('000.000.000-00');
+            } else if (tipo === 'PJ') {
+                input.mask('00.000.000/0000-00');
+            }
+        }
+
+        $(document).ready(function () {
+            $('#tipo').change(function () {
+                aplicarMascaraDocumento($(this).val());
+            });
+
+            // Aplica a máscara se já estiver preenchido (caso de erro de validação)
+            aplicarMascaraDocumento($('#tipo').val());
+        });
+    </script>
+}
