@@ -9,16 +9,23 @@
 <hr />
 
 <div class="row">
+    <span class="mb-4 text-danger fw-bold">(*) Indica campo obrigatório.</span>
     <div class="col-md-6">
-        <form asp-action="Create">
+        <form asp-action="Create" class="d-flex flex-column gap-3">
             <div class="form-group">
-                <label asp-for="Nome" class="control-label"></label>
-                <input asp-for="Nome" class="form-control" required />
+                <div class="d-flex align-items-center gap-2">
+                    <label asp-for="Nome" class="control-label mb-1"></label>
+                    <span class="text-danger fw-bold fs-6">*</span>
+                </div>
+                <input asp-for="Nome" class="form-control" placeholder="Ex. Santos & Santana Advogados" required />
                 <span asp-validation-for="Nome" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                <label asp-for="Tipo" class="control-label"></label>
+                <div class="d-flex align-items-center gap-2">
+                    <label asp-for="Tipo" class="control-label mb-1"></label>
+                    <span class="text-danger fw-bold fs-6">*</span>
+                </div>
                 <select asp-for="Tipo" class="form-control" id="tipo" required>
                     <option value="">Selecione...</option>
                     <option value="PF">Pessoa Física</option>
@@ -28,14 +35,20 @@
             </div>
 
             <div class="form-group">
-                <label asp-for="Documento" class="control-label"></label>
-                <input asp-for="Documento" class="form-control" id="documento" required />
+                <div class="d-flex align-items-center gap-2">
+                    <label asp-for="Documento" class="control-label mb-1"></label>
+                    <span class="text-danger fw-bold fs-6">*</span>
+                </div>
+                <input asp-for="Documento" class="form-control" placeholder="Ex. 508.304.659-87" id="documento" required />
                 <span asp-validation-for="Documento" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                <label asp-for="Telefone" class="control-label"></label>
-                <input asp-for="Telefone" class="form-control" required />
+                <div class="d-flex align-items-center gap-2">
+                    <label asp-for="Telefone" class="control-label mb-1"></label>
+                    <span class="text-danger fw-bold fs-6">*</span>
+                </div>
+                <input asp-for="Telefone" class="form-control" placeholder="Ex. 11 99008-4587" required />
                 <span asp-validation-for="Telefone" class="text-danger"></span>
             </div>
 
