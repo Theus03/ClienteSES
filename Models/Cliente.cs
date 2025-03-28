@@ -7,19 +7,20 @@ namespace CadastroClientes.Models
     {
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage="O campo nome é obrigatório!")]
         public string Nome { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Por favor selecione se o cliente é 'PF' (Pessoa Física) ou 'PJ' (Pessoa Jurídica)")]
         public string Tipo { get; set; } // "PF" (Pessoa Física) ou "PJ" (Pessoa Jurídica)
 
-        [Required]
+        [Required(ErrorMessage ="Informe o Nº Documento do Cliente (CPF ou CNPj)")]
         public string Documento { get; set; }
 
         [Required]
+        [Display(Name ="Data/Hora de Cadastro")]
         public DateTime DataCadastro { get; set; } = DateTime.Now;
 
-        [Required]
+        [Required(ErrorMessage ="O campo telefone é obrigatório!")]
         public string Telefone { get; set; }
 
         public bool Ativo { get; set; } = true;

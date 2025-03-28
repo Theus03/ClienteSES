@@ -4,11 +4,12 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<div class="d-flex align-items-center justify-content-between">
+    <h1>Lista de Clientes</h1>
+    <a class="p-2 text-white rounded-3 text-center" style="background-color: #7E0003; text-decoration:none;" href="/Clientes/Create">+ Adicionar Cliente</a>
+</div>
+
 <table class="table">
     <thead>
         <tr>
@@ -55,9 +56,9 @@
                 @Html.DisplayFor(modelItem => item.Ativo)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="bg-primary p-1 text-white rounded-3"  style="text-decoration:none;">Editar</a> 
+                <a asp-action="Details" asp-route-id="@item.Id" class="bg-info p-1 text-white rounded-3 "  style="text-decoration:none;">Visualizar</a> 
+                <a asp-action="Delete" asp-route-id="@item.Id" class="bg-danger p-1 text-white rounded-3" style="text-decoration:none;">Excluir</a>
             </td>
         </tr>
 }
